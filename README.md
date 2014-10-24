@@ -2,7 +2,8 @@
 
 My dev kit for developing website.
 
-Contain JS:
+(HTML5/JavaScript/CSS)
+
 * jQuery
 * Cycle
 * PrettyPhoto
