@@ -8,4 +8,5 @@ My dev kit for developing website.
 * Cycle
 * PrettyPhoto
 * Wow
-* Modernizr
+* Moderniz
+* hehe :)r
