@@ -9,4 +9,4 @@ My dev kit for developing website.
 * PrettyPhoto
 * Wow
 * Moderniz
-* hehe :)r
+* hehe :)
