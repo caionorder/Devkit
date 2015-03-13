@@ -24,9 +24,18 @@ $(document).ready(function() {
     $.stellar({
         responsive: true
     });
+
   
 
   });
+
 smoothScroll.init();
+
 // WOW Animations
 new WOW().init();
+
+
+// new FilmRoll({
+//     container: '#destaqueproduto ul',
+//     height: 209
+// });
