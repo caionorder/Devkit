@@ -14,4 +14,4 @@ My dev kit for developing website.
 Install Gulp and dependencies 
 
 
-`npm install --save-dev  gulp gulp-watch gulp-less gulp-uglifyjs gulp-concat gulp-rename gulp-minify-css`
+`npm install --save-dev  gulp gulp-watch gulp-less gulp-uglifyjs gulp-concat gulp-rename gulp-minify-css gulp-notify`

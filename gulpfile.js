@@ -4,7 +4,8 @@ var gulp 	  = require('gulp'),
     uglify 	  = require('gulp-uglifyjs'),
     concat    = require('gulp-concat'),
     rename    = require('gulp-rename'),
-    minifyCSS = require('gulp-minify-css');
+    minifyCSS = require('gulp-minify-css'),
+    notify    = require( 'gulp-notify' );
 
 
 
@@ -49,6 +50,7 @@ gulp.task('css',function(){
         .pipe(gulp.dest('./css/'))
         .pipe(minifyCSS())
         .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('./css/'));
+        .pipe(gulp.dest('./css/'))
+        .pipe( notify( 'CSS OK!' ) );
         // console.log('CSS');
 })
