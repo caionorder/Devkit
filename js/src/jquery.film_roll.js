@@ -56,7 +56,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         this.shuttle.addClass('vertical_center');
       }
       if (!(this.options.no_css === true || document.film_roll_styles_added)) {
-        $("<style type='text/css'>.film_roll_wrapper{display:block;text-align:center;float:none;position:relative;top:auto;right:auto;bottom:auto;left:auto;z-index:auto;width:100%;height:100%;margin:0 !important;padding:0 !important;overflow:hidden;}.film_roll_shuttle{text-align:left;float:none;position:relative;top:0;left:0;right:auto;bottom:auto;height:100%;margin:0 !important;padding:0 !important;z-index:auto;}.film_roll_shuttle.vertical_center:before{content:'';display:inline-block;height:100%;vertical-align:middle;margin-right:-0.25em;}.film_roll_child{position:relative;display:inline-block;*display:inline;vertical-align:middle;zoom:1;}.film_roll_prev,.film_roll_next{display:none;position:absolute;top:48%;left:15px;width:40px;height:40px;margin:-20px 0 0 0;padding:0;font-size:60px;font-weight:100;line-height:30px;color:white;text-align:center;}.film_roll_prev:hover,.film_roll_next:hover{color:white;text-decoration:none;opacity:0.9}.film_roll_next{left:auto;right:15px}.film_roll_pager{text-align:center;}.film_roll_pager a{width:5px;height:5px;border:2px solid #333;border-radius:5px;display:inline-block;margin:0 5px 0 0;transition:all 1s ease}.film_roll_pager a:hover{background:#666}.film_roll_pager a.active{background:#333}.film_roll_pager span{display:none}.film_roll_pager a,a.film_roll_prev,a.film_roll_next{-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;}</style>").appendTo('head');
+        $("<style type='text/css'>.film_roll_wrapper{display:block;text-align:center;float:none;position:relative;top:auto;right:auto;bottom:auto;left:auto;z-index:auto;width:100%;height:100%;margin:0 !important;padding:0 !important;overflow:hidden;}.film_roll_shuttle{text-align:left;float:none;position:relative;top:0;left:0;right:auto;bottom:auto;height:100%;margin:0 !important;padding:0 !important;z-index:auto;}.film_roll_shuttle.vertical_center:before{content:'';display:inline-block;height:100%;vertical-align:middle;margin-right:-0.25em;}.film_roll_child{position:relative;display:inline-block;*display:inline;vertical-align:middle;zoom:1;}.film_roll_prev,.film_roll_next{display:block;position:absolute;left:15px;width:40px;height:40px;margin:-20px 0 0 0;padding:0;font-size:60px;font-weight:100;line-height:30px;color:white;text-align:center; margin-top: -60px;}.film_roll_prev:hover,.film_roll_next:hover{color:white;text-decoration:none;opacity:0.9}.film_roll_next{left:auto;right:15px}.film_roll_pager{text-align:center;}.film_roll_pager a{width:5px;height:5px;border:2px solid #333;border-radius:5px;display:inline-block;margin:0 5px 0 0;transition:all 1s ease}.film_roll_pager a:hover{background:#666}.film_roll_pager a.active{background:#333}.film_roll_pager span{display:none}.film_roll_pager a,a.film_roll_prev,a.film_roll_next{-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;}</style>").appendTo('head');
         document.film_roll_styles_added = true;
       }
       if (this.options.pager !== false) {
@@ -114,10 +114,11 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         this.prev = $(this.options.prev);
         this.next = $(this.options.next);
       } else {
-        this.wrapper.append('<a class="film_roll_prev" href="#"><img src="img/frame/test/seta-esq.png"></a>');
-        this.wrapper.append('<a class="film_roll_next" href="#"><img src="img/frame/test/seta-dir.png"></a>');
-        this.prev = this.div.find('.film_roll_prev');
-        this.next = this.div.find('.film_roll_next');
+        //this.wrapper
+        $('#pagerrool').append('<a class="film_roll_prev" href="#"><img src="img/frame/test/seta-esq.png"></a>');
+        $('#pagerrool').append('<a class="film_roll_next" href="#"><img src="img/frame/test/seta-dir.png"></a>');
+        this.prev = $('#pagerrool').find('.film_roll_prev');
+        this.next = $('#pagerrool').find('.film_roll_next');
       }
       this.prev.click(function() {
         return _this.moveRight();

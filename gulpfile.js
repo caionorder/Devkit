@@ -1,7 +1,7 @@
 var gulp 	  = require('gulp'),
     watch 	  = require('gulp-watch'),
     less 	  = require('gulp-less'),
-    uglify 	  = require('gulp-uglifyjs'),
+    uglify 	  = require('gulp-uglify'),
     concat    = require('gulp-concat'),
     rename    = require('gulp-rename'),
     minifyCSS = require('gulp-minify-css'),
@@ -22,7 +22,6 @@ gulp.task('default', function () {
     gulp.watch('./css/app/*.css',function(evt){
         gulp.run('css');
     });
-    
 
 });
 
@@ -31,7 +30,6 @@ gulp.task('less',function(){
     gulp.src('./less/*.less')
         .pipe(less())
         .pipe(gulp.dest('./css/app/')); 
-        // console.log('LESS');
 });
 
 gulp.task('syscss',function(){
@@ -41,7 +39,6 @@ gulp.task('syscss',function(){
         .pipe(minifyCSS())
         .pipe(rename('sys.min.css'))
         .pipe(gulp.dest('./css/'));
-        // console.log('SYSCSS');
 });
 
 gulp.task('css',function(){
@@ -52,5 +49,4 @@ gulp.task('css',function(){
         .pipe(rename('style.min.css'))
         .pipe(gulp.dest('./css/'))
         .pipe( notify( 'CSS OK!' ) );
-        // console.log('CSS');
-})
+});

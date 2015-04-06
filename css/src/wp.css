@@ -45,6 +45,10 @@ a img.aligncenter {
     margin-right: auto
 }
 
+.textjustify{
+    text-align: justify;
+}
+
 .wp-caption {
     background: #fff;
     border: 1px solid #f0f0f0;

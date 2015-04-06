@@ -9,30 +9,9 @@
 <title>DEV :: ÍCONE INTERNET</title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 
-<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="css/sys.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 </head>
 <body>
 
-<!-- CARREGAMENTO -->
-<div id="progress" class="waiting">
-    <dt></dt>
-    <dd></dd>           
-</div>
-
-<!-- Scripts -->
-<script type="text/javascript" src="js/src/modernizr.js"></script>
-<script type="text/javascript" src="js/src/jquery.js"></script>
-<script type="text/javascript" src="js/src/jquery.prettyPhoto.js"></script>
-<script type="text/javascript" src="js/src/colorbox.js"></script>
-<script type="text/javascript" src="js/src/cycle.js"></script>
-<script type="text/javascript" src="js/src/stellar.js"></script>
-<script type="text/javascript" src="js/src/smooth-scroll.js"></script>
-<script type="text/javascript" src="js/src/wow.js"></script>
-<script type="text/javascript" src="js/app/app.js"></script>
-
-
-</body>
-</html>
