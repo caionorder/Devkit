@@ -4,12 +4,16 @@ My dev kit for developing website.
 
 (HTML5/JavaScript/CSS)
 
+###Scripts
 * jQuery
-* Cycle
-* PrettyPhoto
-* Wow
-* Moderniz
-* hehe :)
+* Modernizr
+* Loader Icone
+
+###Folders and Files
+
+Install Bower dependencies
+
+`bower install`
 
 Install Gulp and dependencies 
 

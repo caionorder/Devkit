@@ -1,0 +1,24 @@
+{
+  "name": "DevKit",
+  "version": "0.0.1",
+  "authors": [
+    "Caio Norder <caio@caionorder.com>"
+  ],
+  "description": "Padrao de Desenvolvimento",
+  "main": "assets/scripts/app.js",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/scripts/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.3",
+    "loadericone": "caionorder/loadericone"
+  }
+}
