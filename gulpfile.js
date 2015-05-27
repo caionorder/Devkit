@@ -33,7 +33,13 @@ gulp.task('less',function(){
 });
 
 gulp.task('css',function(){
-    gulp.src('./assets/styles/css/*.css')
+    var css = [
+                './assets/styles/css/normalize.css',
+                './assets/styles/css/wp.css',
+                './assets/styles/css/font.css',
+                './assets/styles/css/style.css',
+            ]
+    gulp.src(css)
         .pipe(concat('style.css'))
         .pipe(gulp.dest('./assets/styles/'))
         .pipe(minifyCSS())
@@ -46,7 +52,7 @@ gulp.task('css',function(){
 gulp.task('js',function(){
     var scripts = [
                     './assets/scripts/components/modernizr/modernizr.js',
-		          './assets/scripts/components/jquery/dist/jquery.min.js',
+		            './assets/scripts/components/jquery/dist/jquery.min.js',
                     './assets/scripts/components/loadericone/loadericone.min.js',
                     './assets/scripts/components/app.js'
                   ];
