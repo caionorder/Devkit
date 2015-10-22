@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
+    "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git#~4.4.0",
     "modernizr": "~2.8.3",
-    "loadericone": "caionorder/loadericone",
-    "stellar": "~0.6.2"
+    "loadericone": "caionorder/loadericone"
   }
 }

@@ -36,6 +36,7 @@ gulp.task('css',function(){
     var css = [
                 './assets/styles/css/normalize.css',
                 './assets/styles/css/wp.css',
+                './assets/scripts/components/font-awesome/css/font-awesome.css',
                 './assets/styles/css/font.css',
                 './assets/styles/css/style.css',
             ]
