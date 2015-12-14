@@ -1,17 +1,19 @@
-var gulp 	  = require('gulp'),
-    watch 	  = require('gulp-watch'),
-    less 	  = require('gulp-less'),
-    uglify 	  = require('gulp-uglify'),
+var gulp      = require('gulp'),
+    watch     = require('gulp-watch'),
+    less      = require('gulp-less'),
+    uglify    = require('gulp-uglify'),
     concat    = require('gulp-concat'),
     rename    = require('gulp-rename'),
     minifyCSS = require('gulp-minify-css'),
-    notify    = require( 'gulp-notify' );
+    notify    = require( 'gulp-notify' ),
+    connect   = require( 'gulp-connect' );
+
 
 
 
 gulp.task('default', function () {
 
-    gulp.run('less','css');
+    gulp.run('less','css','connect');
 
     //Wacht LESS
     gulp.watch('./assets/styles/less/*.less',function(evt){
@@ -20,7 +22,7 @@ gulp.task('default', function () {
 
     //Wacht CSS
     gulp.watch('./assets/styles/css/*.css',function(evt){
-        gulp.run('css');
+        gulp.run('css');        
     });
 
 });
@@ -46,14 +48,14 @@ gulp.task('css',function(){
         .pipe(minifyCSS())
         .pipe(rename('style.min.css'))
         .pipe(gulp.dest('./assets/styles/'))
-        .pipe( notify( 'CSS OK!' ) );
+        .pipe( notify( 'CSS OK!' ) )
+        .pipe( connect.reload() );
 });
-
 
 gulp.task('js',function(){
     var scripts = [
                     './assets/scripts/components/modernizr/modernizr.js',
-		            './assets/scripts/components/jquery/dist/jquery.min.js',
+                    './assets/scripts/components/jquery/dist/jquery.min.js',
                     './assets/scripts/components/loadericone/loadericone.min.js',
                     './assets/scripts/components/app.js'
                   ];
@@ -65,3 +67,8 @@ gulp.task('js',function(){
         .pipe(gulp.dest('./assets/scripts/'))
         .pipe( notify( 'JS OK!' ) );
 });
+
+gulp.task( 'connect', function() {
+  connect.server({ livereload: true });
+});
+
