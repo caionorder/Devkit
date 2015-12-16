@@ -6,7 +6,8 @@ var gulp      = require('gulp'),
     rename    = require('gulp-rename'),
     minifyCSS = require('gulp-minify-css'),
     notify    = require( 'gulp-notify' ),
-    connect   = require( 'gulp-connect' );
+    connect   = require( 'gulp-connect' ),
+    imagemin  = require('gulp-imagemin');
 
 
 
@@ -72,3 +73,9 @@ gulp.task( 'connect', function() {
   connect.server({ livereload: true });
 });
 
+
+gulp.task('jpgs', function() {
+    return gulp.src('./assets/images/src/*.jpg')
+    .pipe(imagemin({ progressive: true }))
+    .pipe(gulp.dest('./assets/images/'));
+});
