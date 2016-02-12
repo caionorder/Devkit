@@ -6,8 +6,7 @@ var gulp      = require('gulp'),
     rename    = require('gulp-rename'),
     minifyCSS = require('gulp-minify-css'),
     notify    = require( 'gulp-notify' ),
-    connect   = require( 'gulp-connect' ),
-    imagemin  = require('gulp-imagemin');
+    connect   = require( 'gulp-connect' );
 
 
 
@@ -25,6 +24,19 @@ gulp.task('default', function () {
     gulp.watch('./assets/styles/css/*.css',function(evt){
         gulp.run('css');        
     });
+
+    //Wacht Html
+    gulp.watch('./*.html',function(evt){
+        gulp.run('html');        
+    });
+
+});
+
+
+gulp.task('html',function(){
+    
+    gulp.src('./*.html')
+        .pipe(connect.reload());
 
 });
 
@@ -55,9 +67,9 @@ gulp.task('css',function(){
 
 gulp.task('js',function(){
     var scripts = [
-                    './assets/scripts/components/modernizr/modernizr.js',
-                    './assets/scripts/components/jquery/dist/jquery.min.js',
-                    './assets/scripts/components/loadericone/loadericone.min.js',
+                    './bower_components/modernizr/modernizr.js',
+                    './bower_components/jquery/dist/jquery.min.js',
+                    './bower_components/loadericone/loadericone.min.js',
                     './assets/scripts/components/app.js'
                   ];
     gulp.src(scripts)
@@ -71,11 +83,4 @@ gulp.task('js',function(){
 
 gulp.task( 'connect', function() {
   connect.server({ livereload: true });
-});
-
-
-gulp.task('jpgs', function() {
-    return gulp.src('./assets/images/src/*.jpg')
-    .pipe(imagemin({ progressive: true }))
-    .pipe(gulp.dest('./assets/images/'));
 });

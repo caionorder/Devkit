@@ -13,4 +13,4 @@ Install Bower dependencies
 
 Install Gulp and dependencies 
 
-`npm install -g gulp, gulp-watch, gulp-less, gulp-uglify, gulp-concat, gulp-rename, gulp-minify-css, gulp-notify, gulp-connect, gulp-imagemin`
+`npm install -g gulp, gulp-watch, gulp-less, gulp-uglify, gulp-concat, gulp-rename, gulp-minify-css, gulp-notify, gulp-connect`
