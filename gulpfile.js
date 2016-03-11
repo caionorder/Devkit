@@ -1,12 +1,13 @@
-var gulp      = require('gulp'),
-    watch     = require('gulp-watch'),
-    less      = require('gulp-less'),
-    uglify    = require('gulp-uglify'),
-    concat    = require('gulp-concat'),
-    rename    = require('gulp-rename'),
-    minifyCSS = require('gulp-minify-css'),
-    notify    = require( 'gulp-notify' ),
-    connect   = require( 'gulp-connect' );
+var gulp        = require('gulp'),
+    watch       = require('gulp-watch'),
+    less        = require('gulp-less'),
+    uglify      = require('gulp-uglify'),
+    concat      = require('gulp-concat'),
+    rename      = require('gulp-rename'),
+    minifyCSS   = require('gulp-minify-css'),
+    notify      = require('gulp-notify'),
+    connect     = require('gulp-connect'),
+    fileinclude = require('gulp-file-include');
 
 
 
@@ -26,19 +27,12 @@ gulp.task('default', function () {
     });
 
     //Wacht Html
-    gulp.watch('./*.html',function(evt){
+    gulp.watch('./source/*.html',function(evt){
         gulp.run('html');        
     });
 
 });
 
-
-gulp.task('html',function(){
-    
-    gulp.src('./*.html')
-        .pipe(connect.reload());
-
-});
 
 gulp.task('less',function(){
     
@@ -79,6 +73,21 @@ gulp.task('js',function(){
         .pipe(rename('app.min.js'))
         .pipe(gulp.dest('./assets/scripts/'))
         .pipe( notify( 'JS OK!' ) );
+});
+
+gulp.task('html',function(){
+    
+    var pages = [
+        './source/index.html'
+    ]
+    gulp.src(pages)
+        .pipe(fileinclude({
+          prefix: '@@',
+          basepath: '@file'
+        }))
+        .pipe(gulp.dest('./'))
+        .pipe(connect.reload());
+
 });
 
 gulp.task( 'connect', function() {
