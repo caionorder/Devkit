@@ -15,8 +15,12 @@ npm install
 
 Install Bower dependencies
 
-`bower install`
+```
+bower install
+```
 
 
 And after
-`gulp`
+```
+gulp
+```
