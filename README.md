@@ -7,12 +7,16 @@ My dev kit for developing website.
 
 ###Folders and Files
 
+Install Gulp and dependencies
+
+```
+npm install
+```
+
 Install Bower dependencies
 
 `bower install`
 
-Install Gulp and dependencies
 
-```
-npm 
-```
+And after
+`gulp`
