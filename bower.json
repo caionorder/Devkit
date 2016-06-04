@@ -1,6 +1,6 @@
 {
   "name": "DevKit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
     "Caio Norder <caio@caionorder.com>"
   ],
@@ -18,8 +18,9 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git#~4.5.0",
+    "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git#^4.6.3",
     "modernizr": "~2.8.3",
-    "loadericone": "caionorder/loadericone"
+    "loadericone": "caionorder/loadericone",
+    "normalize-css": "^4.1.1"
   }
 }
