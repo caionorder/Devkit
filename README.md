@@ -1,6 +1,6 @@
-# My Devkit
+# Devkit
 
-My dev kit for developing website.
+Devkit for front-end developing website.
 
 (HTML5/JavaScript/CSS)
 
