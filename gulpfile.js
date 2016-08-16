@@ -7,7 +7,8 @@ var gulp        = require('gulp'),
     minifyCSS   = require('gulp-minify-css'),
     notify      = require('gulp-notify'),
     connect     = require('gulp-connect'),
-    fileinclude = require('gulp-file-include');
+    fileinclude = require('gulp-file-include'),
+    imageop     = require('gulp-image-optimization');
 
 
 
@@ -98,4 +99,16 @@ gulp.task('html',function(){
 
 gulp.task( 'connect', function() {
   connect.server({ livereload: true });
+});
+
+gulp.task('img',function(){
+
+    gulp.src('./assets/images/src/*')
+        .pipe(imageop({
+          optimizationLevel: 5,
+          progressive: true,
+          interlaced: true
+        }))
+        .pipe(gulp.dest('./assets/images/'));
+
 });

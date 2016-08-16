@@ -27,6 +27,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3",
-    "gulp-watch": "^4.3.6"
+    "gulp-watch": "^4.3.6",
+    "gulp-image-optimization":"^0.1.3"
   }
 }
