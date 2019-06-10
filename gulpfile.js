@@ -1,114 +1,85 @@
-var gulp        = require('gulp'),
-    watch       = require('gulp-watch'),
-    less        = require('gulp-less'),
-    uglify      = require('gulp-uglify'),
-    concat      = require('gulp-concat'),
-    rename      = require('gulp-rename'),
-    minifyCSS   = require('gulp-minify-css'),
-    notify      = require('gulp-notify'),
-    connect     = require('gulp-connect'),
-    fileinclude = require('gulp-file-include'),
-    imageop     = require('gulp-image-optimization');
+const { series, src, dest, watch } = require('gulp');
+const less = require('gulp-less');
+const minifyCSS   = require('gulp-minify-css');
+const notify      = require('gulp-notify');
+const connect     = require('gulp-connect');
+const concat      = require('gulp-concat');
+const rename      = require('gulp-rename');
+const uglify      = require('gulp-uglify');
+const fileinclude = require('gulp-file-include');
 
+function all_tasks(){
+    task_connect();
+    task_less();
+    task_css();
+    task_js();
+    task_html();
+}
 
+function task_connect(){
+    connect.server({ livereload: true });
+}
 
+function task_less(){
+    return src('./assets/styles/less/*.less')
+            .pipe(less())
+            .pipe(dest('./assets/styles/css/'));
+}
 
-gulp.task('default', function () {
-
-    gulp.run('less','css','connect');
-
-    //Wacht LESS
-    gulp.watch('./assets/styles/less/*.less',function(evt){
-        gulp.run('less');
-    });
-
-    //Wacht CSS
-    gulp.watch('./assets/styles/css/*.css',function(evt){
-        gulp.run('css');
-    });
-
-    //Wacht JS
-    gulp.watch('./assets/scripts/components/*.js',function(evt){
-        gulp.run('js');
-    });
-
-    //Wacht Html
-    gulp.watch('./source/*.html',function(evt){
-        gulp.run('html');
-    });
-
-});
-
-
-gulp.task('less',function(){
-
-    gulp.src('./assets/styles/less/*.less')
-        .pipe(less())
-        .pipe(gulp.dest('./assets/styles/css/'));
-});
-
-gulp.task('css',function(){
+function task_css(){
     var css = [
-                './assets/styles/css/normalize.css',
-                './assets/styles/css/wp.css',
-                './bower_components/font-awesome/css/font-awesome.css',
-                './assets/styles/css/font.css',
-                './assets/styles/css/style.css',
-            ]
-    gulp.src(css)
-        .pipe(concat('style.css'))
-        .pipe(gulp.dest('./assets/styles/'))
-        .pipe(minifyCSS())
-        .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('./assets/styles/'))
-        .pipe( notify( 'CSS OK!' ) )
-        .pipe( connect.reload() );
-});
+        './bower_components/normalize-css/normalize.css',
+        './assets/styles/css/wp.css',
+        './assets/styles/fonts/fonts.css',
+        './assets/styles/css/style.css',
+    ];
 
-gulp.task('js',function(){
-    var scripts = [
-                    './bower_components/modernizr/modernizr.js',
-                    './bower_components/jquery/dist/jquery.min.js',
-                    './bower_components/loadericone/loadericone.min.js',
-                    './assets/scripts/components/app.js'
-                  ];
-    gulp.src(scripts)
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('./assets/scripts/'))
-        .pipe(uglify())
-        .pipe(rename('app.min.js'))
-        .pipe(gulp.dest('./assets/scripts/'))
-        .pipe( notify( 'JS OK!' ) )
-        .pipe( connect.reload() );;
-});
+    return src(css)
+            .pipe(concat('style.css'))
+            .pipe(dest('./assets/styles/'))
+            .pipe(minifyCSS())
+            .pipe(rename('style.min.css'))
+            .pipe(dest('./assets/styles/'))
+            .pipe( notify( 'CSS OK!' ) )
+            .pipe( connect.reload() );
+}
 
-gulp.task('html',function(){
+function task_js(){
+    
+        var scripts = [
+                        './bower_components/jquery/dist/jquery.min.js',
+                        './assets/scripts/components/app.js'
+                      ];
+        return src(scripts)
+            .pipe(concat('app.js'))
+            .pipe(dest('./assets/scripts/'))
+            .pipe(uglify())
+            .pipe(rename('app.min.js'))
+            .pipe(dest('./assets/scripts/'))
+            .pipe( notify( 'JS OK!' ) )
+            .pipe( connect.reload() );;
+    
+}
 
-    var pages = [
-        './source/index.html'
-    ]
-    gulp.src(pages)
-        .pipe(fileinclude({
-          prefix: '@@',
-          basepath: '@file'
-        }))
-        .pipe(gulp.dest('./'))
-        .pipe(connect.reload());
+function task_html(){
 
-});
+        var pages = [
+            './source/index.html'
+        ]
+        return src(pages)
+            .pipe(fileinclude({
+              prefix: '@@',
+              basepath: '@file'
+            }))
+            .pipe(dest('./'))
+            .pipe(connect.reload());
+}
 
-gulp.task( 'connect', function() {
-  connect.server({ livereload: true });
-});
+exports.default = function(){
+    all_tasks();
+    watch('./assets/styles/less/*.less',task_less);
+    watch('./assets/styles/css/*.css',task_css);
+    watch('./assets/scripts/components/*.js',task_js);
+    watch('../source/*.html',task_html);
 
-gulp.task('img',function(){
-
-    gulp.src('./assets/images/src/*')
-        .pipe(imageop({
-          optimizationLevel: 5,
-          progressive: true,
-          interlaced: true
-        }))
-        .pipe(gulp.dest('./assets/images/'));
-
-});
+}
